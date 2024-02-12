@@ -1,0 +1,7 @@
+.card-items {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 17px;
+  justify-content: center;
+}
