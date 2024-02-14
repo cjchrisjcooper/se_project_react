@@ -3,7 +3,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import "./Main.css";
 import "./card-section.css";
 import "./card-items.css";
-import { defaultClothingItems } from "../utils/constants";
+import { defaultClothingItems } from "../../utils/constants";
 import { useMemo } from "react";
 
 const Main = ({ currentWeather, onSelectCard }) => {

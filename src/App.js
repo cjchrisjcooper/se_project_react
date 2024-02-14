@@ -5,10 +5,7 @@ import Footer from "./components/Footer/Footer";
 import ModalWithForm from "./components/ModalWithForm/ModalWithForm";
 import { useEffect, useState } from "react";
 import ItemModal from "./components/PreviewModal/ItemModal";
-import {
-  GetWeatherForcast,
-  parseWeatherData,
-} from "./components/utils/WeatherApi";
+import { GetWeatherForcast, parseWeatherData } from "./utils/WeatherApi";
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectCard, setSelectedCard] = useState({});
