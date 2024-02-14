@@ -10,6 +10,7 @@ import { GetWeatherForcast, parseWeatherData } from "./utils/WeatherApi";
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectCard, setSelectedCard] = useState({});
+  const [temp, setTemp] = useState(0);
   const handleCreateModal = () => {
     setActiveModal("create");
   };
@@ -23,18 +24,16 @@ function App() {
 
   useEffect(() => {
     GetWeatherForcast().then((data) => {
-      console.log(data);
-      parseWeatherData(data);
+      const currentTemp = parseWeatherData(data);
+      console.log(currentTemp);
+      setTemp(currentTemp);
     });
   }, []);
   return (
     <div className="page">
       <div className="page__content">
         <Header onAddModalClick={handleCreateModal} />
-        <Main
-          currentWeather={currentWeather}
-          onSelectCard={handleSelectedCard}
-        />
+        <Main currentWeather={temp} onSelectCard={handleSelectedCard} />
         <Footer />
         {activeModal === "create" && (
           <ModalWithForm handleOnModalClose={handleCloseCreateModal}>

@@ -13,7 +13,7 @@ const Header = ({ onAddModalClick }) => {
           src={require("../Images/wtwr°.svg").default}
           className="header__logo-image"
         ></img>
-        <p>{currentDate}, date</p>
+        <p className="header__date">{currentDate}, New York</p>
       </div>
       <div className="header__avatar">
         <button
@@ -22,7 +22,7 @@ const Header = ({ onAddModalClick }) => {
         >
           + Add Clothes
         </button>
-        <p>Chris Cooper</p>
+        <p className="header__name">Chris Cooper</p>
         <img
           src={require("../Images/Avatar.svg").default}
           className="header__avatar-image"

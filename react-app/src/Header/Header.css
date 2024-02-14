@@ -5,7 +5,6 @@
   align-items: center;
   height: 100%;
   max-height: 60px;
-  background-color: lightgray;
 }
 
 .header__logo {
@@ -26,11 +25,28 @@
 .header__add-clothes-button {
   margin-right: 13px;
   text-decoration: none;
-  border: 0;
+  border: none;
+  background: none;
+  font-family: Cabinet Grotesk, "serif";
+  font-weight: 400;
+  font-size: 20px;
   color: #000;
+  cursor: pointer;
+}
+
+.header__name {
+  font-family: Cabinet Grotesk, "serif";
+  font-weight: 400;
+  font-size: 20px;
 }
 
 .header__avatar-image {
   width: 40px;
   height: 40px;
+}
+
+.header__date {
+  font-family: Cabinet Grotesk, "serif";
+  font-weight: 400;
+  line-height: 24px;
 }

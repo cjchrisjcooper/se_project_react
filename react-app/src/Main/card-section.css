@@ -1,3 +1,10 @@
 .card-section {
   margin-top: 40px;
 }
+
+.card-section__weather-title {
+  font-family: Cabinet Grotesk, "serif";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+}

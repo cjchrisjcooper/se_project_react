@@ -1,5 +1,24 @@
+.item-card {
+  position: relative;
+}
+
 .item-card__image {
   border-radius: 19px;
   width: 322px;
   height: 326px;
+}
+
+.item-card__text {
+  position: absolute;
+  top: 15px;
+  left: calc(40%);
+  margin: 0;
+  text-align: center;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: Cabinet Grotesk, "serif";
+  font-weight: 400;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
 }

@@ -4,4 +4,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: 171px;
+  font-family: Cabinet Grotesk, "serif";
+  font-weight: 400;
+  font-size: 16px;
 }
