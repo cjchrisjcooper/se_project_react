@@ -1,4 +1,4 @@
-import "../App.css";
+import "../../App.css";
 import "./Header.css";
 const Header = ({ onAddModalClick }) => {
   const currentDate = new Date().toLocaleString("default", {
@@ -10,7 +10,7 @@ const Header = ({ onAddModalClick }) => {
     <div className="page__header header">
       <div className="header__logo">
         <img
-          src={require("../Images/wtwr°.svg").default}
+          src={require("../../Images/wtwr°.svg").default}
           className="header__logo-image"
         ></img>
         <p className="header__date">{currentDate}, New York</p>
@@ -24,7 +24,7 @@ const Header = ({ onAddModalClick }) => {
         </button>
         <p className="header__name">Chris Cooper</p>
         <img
-          src={require("../Images/Avatar.svg").default}
+          src={require("../../Images/Avatar.svg").default}
           className="header__avatar-image"
         ></img>
       </div>

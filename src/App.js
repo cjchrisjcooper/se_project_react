@@ -1,12 +1,15 @@
 import "./App.css";
-import Header from "./Header/Header";
-import Main from "./Main/Main";
-import { currentWeather } from "./utils/constants";
-import Footer from "./Footer/Footer";
-import ModalWithForm from "./ModalWithForm/ModalWithForm";
+import Header from "./Components/Header/Header";
+import Main from "./Components/Main/Main";
+import { currentWeather } from "./Components/utils/constants";
+import Footer from "./Components/Footer/Footer";
+import ModalWithForm from "./Components/ModalWithForm/ModalWithForm";
 import { useEffect, useState } from "react";
-import ItemModal from "./PreviewModal/ItemModal";
-import { GetWeatherForcast, parseWeatherData } from "./utils/WeatherApi";
+import ItemModal from "./Components/PreviewModal/ItemModal";
+import {
+  GetWeatherForcast,
+  parseWeatherData,
+} from "./Components/utils/WeatherApi";
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectCard, setSelectedCard] = useState({});

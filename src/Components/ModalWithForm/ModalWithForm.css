@@ -27,7 +27,7 @@
 }
 
 .modal-content__close-button {
-  background-image: url("../Images/Close\ Button.svg");
+  background-image: url("../../Images/Close\ Button.svg");
   border: none;
   background-color: transparent;
   background-size: contain;
