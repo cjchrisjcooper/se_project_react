@@ -1,4 +1,4 @@
-import "../../App.css";
+import "../App.css";
 import "./Header.css";
 const Header = ({ onAddModalClick }) => {
   const currentDate = new Date().toLocaleString("default", {
