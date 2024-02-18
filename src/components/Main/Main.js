@@ -32,7 +32,13 @@ const Main = ({ currentWeather, onSelectCard }) => {
         </p>
         <div className="card-section__card-items card-items">
           {filteredCards.map((item) => {
-            return <ItemCard item={item} onSelectCard={onSelectCard} />;
+            return (
+              <ItemCard
+                item={item}
+                onSelectCard={onSelectCard}
+                key={item._id}
+              />
+            );
           })}
         </div>
       </section>

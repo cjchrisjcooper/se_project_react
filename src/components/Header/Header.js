@@ -1,6 +1,8 @@
 import "../App.css";
 import "./Header.css";
-const Header = ({ onAddModalClick }) => {
+import logo from "../../images/wtwr°.svg";
+import avatar from "../../images/Avatar.svg";
+const Header = ({ onAddModalClick, currentLocation }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -9,11 +11,10 @@ const Header = ({ onAddModalClick }) => {
   return (
     <div className="page__header header">
       <div className="header__logo">
-        <img
-          src={require("../../images/wtwr°.svg").default}
-          className="header__logo-image"
-        ></img>
-        <p className="header__date">{currentDate}, New York</p>
+        <img src={logo} className="header__logo-image"></img>
+        <p className="header__date">
+          {currentDate}, {currentLocation}
+        </p>
       </div>
       <div className="header__avatar">
         <button
@@ -23,10 +24,7 @@ const Header = ({ onAddModalClick }) => {
           + Add Clothes
         </button>
         <p className="header__name">Chris Cooper</p>
-        <img
-          src={require("../../images/Avatar.svg").default}
-          className="header__avatar-image"
-        ></img>
+        <img src={avatar} className="header__avatar-image"></img>
       </div>
     </div>
   );
