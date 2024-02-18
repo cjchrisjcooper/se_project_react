@@ -28,13 +28,17 @@ function App() {
   };
 
   useEffect(() => {
-    getWeatherForcast().then((data) => {
-      const currentTemp = parseWeatherData(data);
-      const currentLocation = parseLocationData(data);
-      console.log(currentTemp);
-      setTemp(currentTemp);
-      setCurrentLocation(currentLocation);
-    });
+    getWeatherForcast()
+      .then((data) => {
+        const currentTemp = parseWeatherData(data);
+        const currentLocation = parseLocationData(data);
+        console.log(currentTemp);
+        setTemp(currentTemp);
+        setCurrentLocation(currentLocation);
+      })
+      .catch((res) => {
+        return Promise.reject(`Error: ${res.status}`);
+      });
   }, []);
   return (
     <div className="page">
