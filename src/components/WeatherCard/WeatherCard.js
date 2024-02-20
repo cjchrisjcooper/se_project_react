@@ -13,7 +13,7 @@ const WeatherCard = ({ day, type, weatherTemp = "" }) => {
   return (
     <section id="weather" className="main__weather">
       <p className="main-weather-info">{weatherTemp}F°</p>
-      <img src={imagesrcUrl} className="main-weather-image"></img>
+      <img src={imagesrcUrl} className="main-weather-image" alt={type}></img>
     </section>
   );
 };

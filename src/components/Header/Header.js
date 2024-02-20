@@ -11,7 +11,7 @@ const Header = ({ onAddModalClick, currentLocation }) => {
   return (
     <div className="page__header header">
       <div className="header__logo">
-        <img src={logo} className="header__logo-image"></img>
+        <img src={logo} className="header__logo-image" alt="logo"></img>
         <p className="header__date">
           {currentDate}, {currentLocation}
         </p>
@@ -24,7 +24,7 @@ const Header = ({ onAddModalClick, currentLocation }) => {
           + Add Clothes
         </button>
         <p className="header__name">Chris Cooper</p>
-        <img src={avatar} className="header__avatar-image"></img>
+        <img src={avatar} className="header__avatar-image" alt="Avatar"></img>
       </div>
     </div>
   );
