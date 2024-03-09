@@ -2,6 +2,7 @@ import "../App.css";
 import "./Header.css";
 import logo from "../../images/wtwr°.svg";
 import avatar from "../../images/Avatar.svg";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 const Header = ({ onAddModalClick, currentLocation }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -17,6 +18,7 @@ const Header = ({ onAddModalClick, currentLocation }) => {
         </p>
       </div>
       <div className="header__avatar">
+        <ToggleSwitch />
         <button
           className="header__add-clothes-button"
           onClick={onAddModalClick}
