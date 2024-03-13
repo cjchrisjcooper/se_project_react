@@ -3,6 +3,7 @@ import "./Header.css";
 import logo from "../../images/wtwr°.svg";
 import avatar from "../../images/Avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { Link } from "react-router-dom";
 const Header = ({ onAddModalClick, currentLocation }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -12,11 +13,15 @@ const Header = ({ onAddModalClick, currentLocation }) => {
   return (
     <div className="page__header header">
       <div className="header__logo">
-        <img src={logo} className="header__logo-image" alt="logo"></img>
+        <Link to="/">
+          <img src={logo} className="header__logo-image" alt="logo"></img>
+        </Link>
+
         <p className="header__date">
           {currentDate}, {currentLocation}
         </p>
       </div>
+
       <div className="header__avatar">
         <ToggleSwitch />
         <button
@@ -25,8 +30,12 @@ const Header = ({ onAddModalClick, currentLocation }) => {
         >
           + Add Clothes
         </button>
-        <p className="header__name">Chris Cooper</p>
-        <img src={avatar} className="header__avatar-image" alt="Avatar"></img>
+        <Link to="/profile" className="header__link">
+          <p className="header__name">Chris Cooper</p>
+        </Link>
+        <Link to="/profile" className="header__link">
+          <img src={avatar} className="header__avatar-image" alt="Avatar"></img>
+        </Link>
       </div>
     </div>
   );

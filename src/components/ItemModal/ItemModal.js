@@ -1,6 +1,6 @@
 import "../ModalWithForm/ModalWithForm.css";
 
-const ItemModal = ({ selectedCard, onClose }) => {
+const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
   return (
     <div className={`modal`}>
       <div className="modal-content">
@@ -10,8 +10,20 @@ const ItemModal = ({ selectedCard, onClose }) => {
           className="modal-content__close-button"
         ></button>
         <img src={selectedCard.link} alt={selectedCard.name} />
-        <p>{selectedCard.name}</p>
-        <p>{selectedCard.weather}</p>
+        <div className="modal-content__captions">
+          <div className="modal-content__description">
+            <p>{selectedCard.name}</p>
+            <p>Weather: {selectedCard.weather}</p>
+          </div>
+          <div className="modal-content__delete-section">
+            <button
+              className="modal-content__delete-button"
+              onClick={handleDeleteCard}
+            >
+              Delete Item
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

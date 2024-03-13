@@ -4,7 +4,7 @@ const ItemCard = ({ item, onSelectCard }) => {
   return (
     <div className="item-card">
       <img
-        src={item.link}
+        src={item.imageUrl}
         className="item-card__image"
         onClick={() => onSelectCard(item)}
         alt={item.name}
