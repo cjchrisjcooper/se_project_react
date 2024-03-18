@@ -1,0 +1,12 @@
+.sideBar {
+  max-width: 229px;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+}
+
+.sidebar__avatar-image {
+  position: relative;
+  top: 10px;
+}

@@ -1,12 +1,26 @@
 import "./ClothesSection.css";
 import { useMemo, useContext } from "react";
 import { defaultClothingItems } from "../../utils/constants";
-const ClothesSection = ({ currentWeather, OnSelectCard }) => {
+import ItemCard from "../ItemCard/ItemCard";
+const ClothesSection = ({ cards, onCardClick, onAddNewCardClick }) => {
   return (
-    <div className="ClothesSection">
-      <p>A</p>
-      <p>A</p>
-      <p>A</p>
+    <div className="clothesSection">
+      <div className="clothesSection__add-clothes">
+        <p className="clothesSection__text">Your Items</p>
+        <button
+          className="clothesSection__add-clothes-button"
+          onClick={onAddNewCardClick}
+        >
+          + Add New
+        </button>
+      </div>
+      <div className="clothesSection__cards">
+        {cards.map((item) => {
+          return (
+            <ItemCard item={item} onSelectCard={onCardClick} key={item._id} />
+          );
+        })}
+      </div>
     </div>
   );
 };

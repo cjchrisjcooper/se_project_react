@@ -15,7 +15,9 @@ import {
   parseWeatherData,
   parseLocationData,
 } from "../utils/WeatherApi";
+import Api from "../utils/api.js";
 function App() {
+  const api = new Api("http://localhost:3001");
   const [activeModal, setActiveModal] = useState("");
   const [selectCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
@@ -33,14 +35,11 @@ function App() {
     setActiveModal("preview");
   };
 
-  const handleDeleteCard = () => {
+  const handleDeleteCard = (card) => {
     //Make some API call that deletes the card from the server
-
-    //set the select card to an empty object
-    setSelectedCard({});
-
-    //filter through the clothing items using the filter() method
-
+    api.DeleteClothingItem(card._id).then(() => {
+      setClothingItems((cards) => cards.filter((x) => x._id !== card._id));
+    });
     //close the modal
     handleCloseModal();
   };
@@ -52,8 +51,10 @@ function App() {
 
   const handleAddItemSubmit = (item) => {
     //call the api methods that you need to add an item
-    console.log(item);
-    setClothingItems([clothingItems, ...clothingItems]);
+    api.addNewClothingItems(item).then((newClothingItem) => {
+      console.log(newClothingItem);
+      setClothingItems([newClothingItem, ...clothingItems]);
+    });
   };
 
   useEffect(() => {
@@ -68,6 +69,18 @@ function App() {
       .catch((res) => {
         console.log(`There is an error in the program: ${res}`);
       });
+  }, []);
+
+  //the app component will get all the clothing items in the mock server
+  // and save them in the state variable "clothingItems"
+  useEffect(() => {
+    api
+      .getClothingItems()
+      .then((items) => {
+        setClothingItems(items);
+        console.log(clothingItems);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   return (
@@ -85,15 +98,24 @@ function App() {
               path="/profile"
               element={
                 <Profile
+                  cards={clothingItems}
                   currentWeather={temp}
-                  onSelectCard={handleSelectedCard}
+                  onCardClick={handleSelectedCard}
+                  onAddNewCardClick={() => {
+                    setActiveModal("create");
+                  }}
+                  onCardDelete={handleDeleteCard}
                 />
               }
             ></Route>
             <Route
               path="/"
               element={
-                <Main currentWeather={temp} onSelectCard={handleSelectedCard} />
+                <Main
+                  cards={clothingItems}
+                  currentWeather={temp}
+                  onSelectCard={handleSelectedCard}
+                />
               }
             ></Route>
           </Routes>
