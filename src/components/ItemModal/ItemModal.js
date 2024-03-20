@@ -1,5 +1,5 @@
 import "../ModalWithForm/ModalWithForm.css";
-
+import "./ItemModal.css";
 const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
   return (
     <div className={`modal`}>
@@ -9,7 +9,11 @@ const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
           onClick={onClose}
           className="modal-content__close-button"
         ></button>
-        <img src={selectedCard.imageUrl} alt={selectedCard.name} />
+        <img
+          src={selectedCard.imageUrl}
+          alt={selectedCard.name}
+          className="modal-content__image"
+        />
         <div className="modal-content__captions">
           <div className="modal-content__description">
             <p>{selectedCard.name}</p>

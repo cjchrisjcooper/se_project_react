@@ -49,12 +49,15 @@ function App() {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
   };
 
-  const handleAddItemSubmit = (item) => {
+  const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
     //call the api methods that you need to add an item
-    api.addNewClothingItems(item).then((newClothingItem) => {
-      console.log(newClothingItem);
-      setClothingItems([newClothingItem, ...clothingItems]);
-    });
+    api
+      .addNewClothingItems({ name, imageUrl, weather })
+      .then((newClothingItem) => {
+        console.log(newClothingItem);
+        setClothingItems([newClothingItem, ...clothingItems]);
+        handleCloseModal();
+      });
   };
 
   useEffect(() => {

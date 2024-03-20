@@ -54,7 +54,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
           name="link"
           id="link"
           minLength="1"
-          maxLength="30"
+          maxLength="250"
           placeholder="Image-URL"
           className="modal__input"
           value={imageUrl}

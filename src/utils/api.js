@@ -17,14 +17,14 @@ class Api {
   getClothingItems() {
     return fetch(`${this._baseUrl}/items`, {
       method: "GET",
-      headers: this._headers,
+      headers: this.headers,
     }).then(this._checkValidResponse);
   }
 
   addNewClothingItems({ name, weather, imageUrl }) {
     return fetch(`${this._baseUrl}/items`, {
       method: "POST",
-      headers: this._headers,
+      headers: this.headers,
       body: JSON.stringify({ name, weather, imageUrl }),
     }).then(this._checkValidResponse);
   }
@@ -32,7 +32,7 @@ class Api {
   DeleteClothingItem(id) {
     return fetch(`${this._baseUrl}/items/${id}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: this.headers,
     }).then(this._checkValidResponse);
   }
 }
