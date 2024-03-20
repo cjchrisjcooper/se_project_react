@@ -6,7 +6,7 @@ import Footer from "./Footer/Footer";
 import ModalWithForm from "./ModalWithForm/ModalWithForm";
 import { useEffect, useState } from "react";
 import ItemModal from "./ItemModal/ItemModal";
-import { currentTemperatureUnitContext } from "./contexts/CurrentTemperatureUnitContext";
+import { currentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddItemModal from "./addItemModal/AddItemModal";
 import Profile from "./profile/Profile.js";
