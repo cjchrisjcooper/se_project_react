@@ -4,10 +4,10 @@ import "./Main.css";
 import "./card-section.css";
 import "./card-items.css";
 import { useMemo, useContext } from "react";
-import { currentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
 const Main = ({ currentWeather, onSelectCard, cards }) => {
-  const { currentTemperatureUnit } = useContext(currentTemperatureUnitContext);
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   console.log(currentTemperatureUnit);
   const tempUnit = currentWeather?.temperature?.[currentTemperatureUnit] || 125;
   const weatherType = useMemo(() => {

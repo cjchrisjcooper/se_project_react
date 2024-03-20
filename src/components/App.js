@@ -6,7 +6,7 @@ import Footer from "./Footer/Footer";
 import ModalWithForm from "./ModalWithForm/ModalWithForm";
 import { useEffect, useState } from "react";
 import ItemModal from "./ItemModal/ItemModal";
-import { currentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
+import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddItemModal from "./addItemModal/AddItemModal";
 import Profile from "./profile/Profile.js";
@@ -89,7 +89,7 @@ function App() {
   return (
     <div className="page">
       <div className="page__content">
-        <currentTemperatureUnitContext.Provider
+        <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
           <Header
@@ -137,7 +137,7 @@ function App() {
             />
           )}
           <Footer />
-        </currentTemperatureUnitContext.Provider>
+        </CurrentTemperatureUnitContext.Provider>
       </div>
     </div>
   );
