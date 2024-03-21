@@ -1,23 +1,23 @@
 import "./App.css";
-import "./ModalWithForm/ModalWithForm.css";
-import Header from "./Header/Header";
-import Main from "./Main/Main";
-import Footer from "./Footer/Footer";
-import ModalWithForm from "./ModalWithForm/ModalWithForm";
+import "../ModalWithForm/ModalWithForm.css";
+import Header from "../Header/Header.js";
+import Main from "../Main/Main.js";
+import Footer from "../Footer/Footer.js";
 import { useEffect, useState } from "react";
-import ItemModal from "./ItemModal/ItemModal";
-import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
+import ItemModal from "../ItemModal/ItemModal.js";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AddItemModal from "./addItemModal/AddItemModal";
-import Profile from "./profile/Profile.js";
+import AddItemModal from "../addItemModal/AddItemModal.js";
+import Profile from "../profile/Profile.js";
 import {
   getWeatherForcast,
   parseWeatherData,
   parseLocationData,
-} from "../utils/WeatherApi";
-import Api from "../utils/api.js";
+} from "../../utils/WeatherApi.js";
+import { api } from "../../utils/constants.js";
+// import Api from "../../utils/api.js";
+// const api = new Api("http://localhost:3001");
 function App() {
-  const api = new Api("http://localhost:3001");
   const [activeModal, setActiveModal] = useState("");
   const [selectCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
@@ -37,16 +37,20 @@ function App() {
 
   const handleDeleteCard = (card) => {
     //Make some API call that deletes the card from the server
-    api.DeleteClothingItem(card._id).then(() => {
-      setClothingItems((cards) => cards.filter((x) => x._id !== card._id));
-    });
+    api
+      .deleteClothingItem(card._id)
+      .then(() => {
+        setClothingItems((cards) => cards.filter((x) => x._id !== card._id));
+      })
+      .catch((res) => {
+        console.log(`There is an error in the program: ${res}`);
+      });
     //close the modal
     handleCloseModal();
   };
 
   const handleToggleSwitchChange = () => {
-    if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
-    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
+    setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
   const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
@@ -57,6 +61,9 @@ function App() {
         console.log(newClothingItem);
         setClothingItems([newClothingItem, ...clothingItems]);
         handleCloseModal();
+      })
+      .catch((res) => {
+        console.log(`There is an error in the program: ${res}`);
       });
   };
 
@@ -83,7 +90,7 @@ function App() {
         setClothingItems(items);
         console.log(clothingItems);
       })
-      .catch((err) => console.log(err));
+      .catch((res) => console.log(`There is an error in the program: ${res}`));
   }, []);
 
   return (

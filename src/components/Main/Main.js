@@ -8,9 +8,8 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 
 const Main = ({ currentWeather, onSelectCard, cards }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  console.log(currentTemperatureUnit);
   const tempUnit = currentWeather?.temperature?.[currentTemperatureUnit] || 125;
-  const weatherType = useMemo(() => {
+  const weatherType = () => {
     if (tempUnit >= 86) {
       return "hot";
     } else if (tempUnit < 86 && tempUnit >= 66) {
@@ -18,12 +17,12 @@ const Main = ({ currentWeather, onSelectCard, cards }) => {
     } else if (tempUnit < 66) {
       return "cold";
     }
-  }, [tempUnit]);
+  };
 
   const weatherUnit = currentTemperatureUnit === "F" ? "F" : "C";
 
   const filteredCards = cards.filter((item) => {
-    return item.weather.toLowerCase() === weatherType;
+    return item.weather.toLowerCase() === weatherType();
   });
 
   return (

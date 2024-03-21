@@ -1,5 +1,5 @@
 .modal {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
@@ -7,7 +7,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: rgba(0, 0, 0, 0.3); */
+  background-color: rgba(0, 0, 0, 0.3);
+  font-family: Cabinet Grotesk, "serif";
   height: 100%;
 }
 
@@ -66,6 +67,10 @@
   left: calc(100% - 38px);
 }
 
+.modal-content__close-button:hover {
+  cursor: pointer;
+}
+
 .modal_label-text {
   margin: 0 0 3px;
 
@@ -89,7 +94,14 @@
   font-style: normal;
   border-radius: 4px;
   color: rgba(255, 255, 255, 1);
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgb(0, 0, 0);
+  /* transition: opacity 0.5s linear 0s; */
+  border: none;
+}
+
+.modal__button:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }
 
 .modal__radio-button-text {

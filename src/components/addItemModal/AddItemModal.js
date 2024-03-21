@@ -22,9 +22,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
     onAddItem({ name, imageUrl, weather });
-    e.target.reset();
   };
 
   return (
@@ -32,9 +30,11 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleFormSubmit}
+      buttonText="add Garmet"
+      title="Add Garment"
     >
-      <label htmlFor="name">
-        <p className="modal_label-text">Name</p>
+      <label htmlFor="name" className="modal_label-text">
+        Name
         <input
           type="text"
           id="name"
@@ -47,8 +47,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
           onChange={handleNameChange}
         />
       </label>
-      <label htmlFor="link">
-        <p className="modal_label-text">Image</p>
+      <label htmlFor="link" className="modal_label-text">
+        Image
         <input
           type="url"
           name="link"

@@ -29,7 +29,7 @@ class Api {
     }).then(this._checkValidResponse);
   }
 
-  DeleteClothingItem(id) {
+  deleteClothingItem(id) {
     return fetch(`${this._baseUrl}/items/${id}`, {
       method: "DELETE",
       headers: this.headers,

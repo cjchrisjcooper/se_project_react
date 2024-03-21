@@ -6,13 +6,13 @@ import { weatherOptions } from "../../utils/constants";
 const WeatherCard = ({ day, type, weatherTemp = "" }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const weatherUnit = currentTemperatureUnit === "F" ? "F" : "C";
-  const imagesrc = weatherOptions.filter((i) => {
-    if (i.day === day && i.type === type) {
-      return i;
+  const weatherOption = weatherOptions.find((item) => {
+    if (item.day === day && item.type === type) {
+      return item;
     }
   });
 
-  const imagesrcUrl = imagesrc[0].url || "";
+  const imagesrcUrl = weatherOption.url || "";
   return (
     <section id="weather" className="main__weather">
       <p className="main-weather-info">
