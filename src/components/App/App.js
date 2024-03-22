@@ -41,12 +41,12 @@ function App() {
       .deleteClothingItem(card._id)
       .then(() => {
         setClothingItems((cards) => cards.filter((x) => x._id !== card._id));
+        //close the modal
+        handleCloseModal();
       })
       .catch((res) => {
         console.log(`There is an error in the program: ${res}`);
       });
-    //close the modal
-    handleCloseModal();
   };
 
   const handleToggleSwitchChange = () => {

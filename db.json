@@ -86,9 +86,15 @@
     },
     {
       "name": "hat",
-      "weather": "cold",
+      "weather": "",
       "imageUrl": "https://di2ponv0v5otw.cloudfront.net/posts/2023/02/14/63eb53423074d550314e14e9/m_63eb538017fb4beea56928c6.jpeg",
       "_id": 17
+    },
+    {
+      "name": "hat",
+      "weather": "cold",
+      "imageUrl": "https://di2ponv0v5otw.cloudfront.net/posts/2023/02/14/63eb53423074d550314e14e9/m_63eb538017fb4beea56928c6.jpeg",
+      "_id": 18
     }
   ]
 }

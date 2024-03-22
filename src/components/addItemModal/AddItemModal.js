@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
@@ -24,6 +24,14 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
     e.preventDefault();
     onAddItem({ name, imageUrl, weather });
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      setName("");
+      setWeather("");
+      setUrl("");
+    }
+  }, [isOpen]);
 
   return (
     <ModalWithForm
