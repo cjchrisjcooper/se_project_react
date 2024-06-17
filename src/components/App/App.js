@@ -6,8 +6,9 @@ import Footer from "../Footer/Footer.js";
 import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import AddItemModal from "../addItemModal/AddItemModal.js";
+
 import Profile from "../profile/Profile.js";
 import {
   getWeatherForcast,
@@ -15,6 +16,8 @@ import {
   parseLocationData,
 } from "../../utils/WeatherApi.js";
 import { api } from "../../utils/constants.js";
+import RegisterModal from "../RegisterModal/RegisterModal.js";
+import LogInModal from "../LoginModal/LoginModal.js";
 // import Api from "../../utils/api.js";
 // const api = new Api("http://localhost:3001");
 function App() {
@@ -26,6 +29,12 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const handleCreateModal = () => {
     setActiveModal("create");
+  };
+  const handleRegisterModal = () => {
+    setActiveModal("register");
+  };
+  const handlelogInModal = () => {
+    setActiveModal("logIn");
   };
   const handleCloseModal = () => {
     setActiveModal("");
@@ -66,6 +75,23 @@ function App() {
         console.log(`There is an error in the program: ${res}`);
       });
   };
+  const handleUserRegistrationSubmit = () => {
+    //call the api methods that you need to add an item
+    console.log("we did it. You Registerd");
+  };
+
+  const handleUserLogInSubmit = () => {
+    //call the api methods that you need to add an item
+    console.log("we did it. You logged in");
+  };
+
+  const handleFormRedirect = () => {
+    if (activeModal === "register") {
+      setActiveModal("logIn");
+    } else {
+      setActiveModal("register");
+    }
+  };
 
   useEffect(() => {
     getWeatherForcast()
@@ -101,6 +127,8 @@ function App() {
         >
           <Header
             onAddModalClick={handleCreateModal}
+            onRegisterModalClick={handleRegisterModal}
+            onLogInModalClick={handlelogInModal}
             currentLocation={currentLocation}
           />
           <Routes>
@@ -141,6 +169,22 @@ function App() {
               selectedCard={selectCard}
               onClose={handleCloseModal}
               handleDeleteCard={handleDeleteCard}
+            />
+          )}
+          {activeModal === "register" && (
+            <RegisterModal
+              handleCloseModal={handleCloseModal}
+              isOpen={activeModal === "create"}
+              onAddUser={handleUserRegistrationSubmit}
+              handleModalRedirect={handleFormRedirect}
+            />
+          )}
+          {activeModal === "logIn" && (
+            <LogInModal
+              handleCloseModal={handleCloseModal}
+              isOpen={activeModal === "create"}
+              onAddUser={handleUserLogInSubmit}
+              handleModalRedirect={handleFormRedirect}
             />
           )}
           <Footer />

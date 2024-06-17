@@ -3,7 +3,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import "./Main.css";
 import "./card-section.css";
 import "./card-items.css";
-import { useMemo, useContext } from "react";
+import { useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
 const Main = ({ currentWeather, onSelectCard, cards }) => {
@@ -22,6 +22,7 @@ const Main = ({ currentWeather, onSelectCard, cards }) => {
   const weatherUnit = currentTemperatureUnit === "F" ? "F" : "C";
 
   const filteredCards = cards.filter((item) => {
+    console.log(item);
     return item.weather.toLowerCase() === weatherType();
   });
 

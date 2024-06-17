@@ -4,7 +4,12 @@ import logo from "../../images/wtwr°.svg";
 import avatar from "../../images/Avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
-const Header = ({ onAddModalClick, currentLocation }) => {
+const Header = ({
+  onAddModalClick,
+  onRegisterModalClick,
+  onLogInModalClick,
+  currentLocation,
+}) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -29,6 +34,18 @@ const Header = ({ onAddModalClick, currentLocation }) => {
           onClick={onAddModalClick}
         >
           + Add Clothes
+        </button>
+        <button
+          className="header__add-clothes-button"
+          onClick={onRegisterModalClick}
+        >
+          Sign Up
+        </button>
+        <button
+          className="header__add-clothes-button"
+          onClick={onLogInModalClick}
+        >
+          Log In
         </button>
         <Link to="/profile" className="header__link">
           <p className="header__name">Chris Cooper</p>
