@@ -6,7 +6,7 @@ import Footer from "../Footer/Footer.js";
 import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import AddItemModal from "../addItemModal/AddItemModal.js";
 
 import Profile from "../profile/Profile.js";
@@ -27,6 +27,7 @@ function App() {
   const [currentLocation, setCurrentLocation] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const handleCreateModal = () => {
     setActiveModal("create");
   };
@@ -130,6 +131,7 @@ function App() {
             onRegisterModalClick={handleRegisterModal}
             onLogInModalClick={handlelogInModal}
             currentLocation={currentLocation}
+            currentlyLoggedIn={isLoggedIn}
           />
           <Routes>
             <Route

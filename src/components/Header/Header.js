@@ -4,11 +4,13 @@ import logo from "../../images/wtwr°.svg";
 import avatar from "../../images/Avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 const Header = ({
   onAddModalClick,
   onRegisterModalClick,
   onLogInModalClick,
   currentLocation,
+  currentlyLoggedIn,
 }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -35,24 +37,35 @@ const Header = ({
         >
           + Add Clothes
         </button>
-        <button
-          className="header__add-clothes-button"
-          onClick={onRegisterModalClick}
-        >
-          Sign Up
-        </button>
-        <button
-          className="header__add-clothes-button"
-          onClick={onLogInModalClick}
-        >
-          Log In
-        </button>
-        <Link to="/profile" className="header__link">
-          <p className="header__name">Chris Cooper</p>
-        </Link>
-        <Link to="/profile" className="header__link">
-          <img src={avatar} className="header__avatar-image" alt="Avatar"></img>
-        </Link>
+        {currentlyLoggedIn === false && (
+          <button
+            className="header__add-clothes-button"
+            onClick={onRegisterModalClick}
+          >
+            Sign Up
+          </button>
+        )}
+
+        {currentlyLoggedIn === false && (
+          <button
+            className="header__add-clothes-button"
+            onClick={onLogInModalClick}
+          >
+            Log In
+          </button>
+        )}
+        <ProtectedRoute isLoggedIn={currentlyLoggedIn}>
+          <Link to="/profile" className="header__link">
+            <p className="header__name">Chris Cooper</p>
+          </Link>
+          <Link to="/profile" className="header__link">
+            <img
+              src={avatar}
+              className="header__avatar-image"
+              alt="Avatar"
+            ></img>
+          </Link>
+        </ProtectedRoute>
       </div>
     </div>
   );
