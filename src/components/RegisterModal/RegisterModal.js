@@ -62,7 +62,7 @@ const RegisterModal = ({
       <label htmlFor="email" className="modal_label-text">
         Email
         <input
-          type="text"
+          type="email"
           id="email"
           name="email"
           minLength="1"
@@ -76,7 +76,7 @@ const RegisterModal = ({
       <label htmlFor="password" className="modal_label-text">
         Password
         <input
-          type="url"
+          type="text"
           name="password"
           id="password"
           minLength="1"
@@ -90,7 +90,7 @@ const RegisterModal = ({
       <label htmlFor="name" className="modal_label-text">
         Name
         <input
-          type="url"
+          type="text"
           name="Name"
           id="Name"
           minLength="1"

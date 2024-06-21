@@ -8,6 +8,7 @@ import ItemModal from "../ItemModal/ItemModal.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { Routes, Route, Navigate } from "react-router-dom";
 import AddItemModal from "../addItemModal/AddItemModal.js";
+import { register, authorize } from "../../utils/auth.js";
 
 import Profile from "../profile/Profile.js";
 import {
@@ -76,10 +77,6 @@ function App() {
         console.log(`There is an error in the program: ${res}`);
       });
   };
-  const handleUserRegistrationSubmit = () => {
-    //call the api methods that you need to add an item
-    console.log("we did it. You Registerd");
-  };
 
   const handleUserLogInSubmit = () => {
     //call the api methods that you need to add an item
@@ -92,6 +89,18 @@ function App() {
     } else {
       setActiveModal("register");
     }
+  };
+
+  const handleUserRegistrationSubmit = (name, password, email, avatar) => {
+    register(name, password, email, avatar)
+      .then((user) => {
+        console.log(user);
+        setIsLoggedIn(true);
+        handleCloseModal();
+      })
+      .catch((res) => {
+        console.log(`There is an error in the program: ${res}`);
+      });
   };
 
   useEffect(() => {

@@ -62,7 +62,7 @@ const LogInModal = ({
       <label htmlFor="password" className="modal_label-text">
         Password
         <input
-          type="url"
+          type="text"
           name="password"
           id="password"
           minLength="1"
