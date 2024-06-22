@@ -29,6 +29,8 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  //this is the current suer. needs to be set when the user registers and passed to the header.
+  const [currentUser, setCurrentUser] = useState({});
   const handleCreateModal = () => {
     setActiveModal("create");
   };
