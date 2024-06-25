@@ -1,10 +1,12 @@
 import "../App/App.css";
 import "./Header.css";
 import logo from "../../images/wtwr°.svg";
-import avatar from "../../images/Avatar.svg";
+//import avatar from "../../images/Avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 const Header = ({
   onAddModalClick,
   onRegisterModalClick,
@@ -12,6 +14,8 @@ const Header = ({
   currentLocation,
   currentlyLoggedIn,
 }) => {
+  const currentUser = useContext(CurrentUserContext);
+
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -56,11 +60,11 @@ const Header = ({
         )}
         <ProtectedRoute isLoggedIn={currentlyLoggedIn}>
           <Link to="/profile" className="header__link">
-            <p className="header__name">Chris Cooper</p>
+            <p className="header__name">{currentUser.name}</p>
           </Link>
           <Link to="/profile" className="header__link">
             <img
-              src={avatar}
+              src={currentUser.avatar}
               className="header__avatar-image"
               alt="Avatar"
             ></img>

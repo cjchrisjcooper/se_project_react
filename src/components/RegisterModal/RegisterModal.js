@@ -27,15 +27,15 @@ const RegisterModal = ({
     setPassword(e.target.value);
   };
 
-  const [avatarUrl, setavatarUrl] = useState("");
+  const [avatar, setavatar] = useState("");
   const handleAvatarUrlChange = (e) => {
     console.log(e.target.value);
-    setavatarUrl(e.target.value);
+    setavatar(e.target.value);
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    onAddUser(name, password, email, avatarUrl);
+    onAddUser(name, password, email, avatar);
   };
 
   //same thing with this as well
@@ -111,7 +111,7 @@ const RegisterModal = ({
           maxLength="250"
           placeholder="Avatar-URL"
           className="modal__input"
-          value={avatarUrl}
+          value={avatar}
           onChange={handleAvatarUrlChange}
         />
       </label>

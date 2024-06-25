@@ -21,6 +21,17 @@ class Api {
     }).then(this._checkValidResponse);
   }
 
+  getUserInfo(token) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }).then(this._checkValidResponse);
+  }
+
   addNewClothingItems({ name, weather, imageUrl }) {
     return fetch(`${this._baseUrl}/items`, {
       method: "POST",

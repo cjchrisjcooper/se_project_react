@@ -23,7 +23,7 @@ const LogInModal = ({
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    onLogInUser();
+    onLogInUser(email, password);
   };
 
   //same thing with this as well
