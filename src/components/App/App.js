@@ -20,8 +20,8 @@ import {
 import { api } from "../../utils/constants.js";
 import RegisterModal from "../RegisterModal/RegisterModal.js";
 import LogInModal from "../LoginModal/LoginModal.js";
-import Api from "../../utils/api.js";
-const userApi = new Api("http://localhost:3001");
+// import Api from "../../utils/api.js";
+// const userApi = new Api("http://localhost:3001");
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -72,7 +72,7 @@ function App() {
   const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
     //call the api methods that you need to add an item
     api
-      .addNewClothingItems({ name, imageUrl, weather })
+      .addNewClothingItems({ name, imageUrl, weather }, jwt)
       .then((newClothingItem) => {
         console.log(newClothingItem);
         setClothingItems([newClothingItem, ...clothingItems]);
@@ -95,7 +95,7 @@ function App() {
         localStorage.setItem("jwt", res.token);
         handleCloseModal();
 
-        userApi
+        api
           .getUserInfo(res.token)
           .then((user) => {
             setCurrentUser(user);
@@ -160,7 +160,7 @@ function App() {
   useEffect(() => {
     if (jwt) {
       console.log("there is a token");
-      userApi
+      api
         .getUserInfo(jwt)
         .then((user) => {
           setCurrentUser(user);

@@ -35,12 +35,15 @@ const Header = ({
 
       <div className="header__avatar">
         <ToggleSwitch />
-        <button
-          className="header__add-clothes-button"
-          onClick={onAddModalClick}
-        >
-          + Add Clothes
-        </button>
+        <ProtectedRoute isLoggedIn={currentlyLoggedIn}>
+          <button
+            className="header__add-clothes-button"
+            onClick={onAddModalClick}
+          >
+            + Add Clothes
+          </button>
+        </ProtectedRoute>
+
         {currentlyLoggedIn === false && (
           <button
             className="header__add-clothes-button"

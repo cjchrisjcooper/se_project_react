@@ -32,10 +32,14 @@ class Api {
     }).then(this._checkValidResponse);
   }
 
-  addNewClothingItems({ name, weather, imageUrl }) {
+  addNewClothingItems({ name, weather, imageUrl }, token) {
     return fetch(`${this._baseUrl}/items`, {
       method: "POST",
-      headers: this.headers,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify({ name, weather, imageUrl }),
     }).then(this._checkValidResponse);
   }
