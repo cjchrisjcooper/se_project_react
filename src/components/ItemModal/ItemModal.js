@@ -29,7 +29,7 @@ const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
             <p>{selectedCard.name}</p>
             <p>Weather: {selectedCard.weather}</p>
           </div>
-          <div className={isOwn}>
+          <div className={itemDeleteButtonClassName}>
             <button
               className="modal-content__delete-button"
               onClick={() => {
