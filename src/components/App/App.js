@@ -20,6 +20,7 @@ import {
 import { api } from "../../utils/constants.js";
 import RegisterModal from "../RegisterModal/RegisterModal.js";
 import LogInModal from "../LoginModal/LoginModal.js";
+import EditProfileModal from "../editProfileModal/EditProfileModal.js";
 // import Api from "../../utils/api.js";
 // const userApi = new Api("http://localhost:3001");
 
@@ -42,6 +43,10 @@ function App() {
   };
   const handlelogInModal = () => {
     setActiveModal("logIn");
+  };
+
+  const handleEditProfileModal = () => {
+    setActiveModal("EditProfile");
   };
   const handleCloseModal = () => {
     setActiveModal("");
@@ -130,6 +135,12 @@ function App() {
       });
   };
 
+  const handlelogOut = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    setCurrentUser({});
+  };
+
   useEffect(() => {
     getWeatherForcast()
       .then((data) => {
@@ -200,6 +211,8 @@ function App() {
                       setActiveModal("create");
                     }}
                     onCardDelete={handleDeleteCard}
+                    onLogOut={handlelogOut}
+                    onProfileEdit={handleEditProfileModal}
                   />
                 }
               ></Route>
@@ -231,7 +244,7 @@ function App() {
             {activeModal === "register" && (
               <RegisterModal
                 handleCloseModal={handleCloseModal}
-                isOpen={activeModal === "create"}
+                isOpen={activeModal === "register"}
                 onAddUser={handleUserRegistrationSubmit}
                 handleModalRedirect={handleFormRedirect}
               />
@@ -239,7 +252,16 @@ function App() {
             {activeModal === "logIn" && (
               <LogInModal
                 handleCloseModal={handleCloseModal}
-                isOpen={activeModal === "create"}
+                isOpen={activeModal === "logIn"}
+                onLogInUser={handleUserLogInSubmit}
+                handleModalRedirect={handleFormRedirect}
+              />
+            )}
+
+            {activeModal === "EditProfile" && (
+              <EditProfileModal
+                handleCloseModal={handleCloseModal}
+                isOpen={activeModal === "EditProfile"}
                 onLogInUser={handleUserLogInSubmit}
                 handleModalRedirect={handleFormRedirect}
               />

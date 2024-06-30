@@ -3,7 +3,7 @@ import "../Header/Header.css";
 //import avatar from "../../images/Avatar.svg";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
-const SideBar = () => {
+const SideBar = ({ onProfileEditClick, onLogOutClick }) => {
   const currentUser = useContext(CurrentUserContext);
 
   return (
@@ -17,10 +17,14 @@ const SideBar = () => {
         <p className="header__name">{currentUser.name}</p>
       </div>
       <div className="sideBar__edit-profile-section">
-        <button className="sideBar__button">Change Profile data</button>
+        <button className="sideBar__button" onClick={onProfileEditClick}>
+          Change Profile data
+        </button>
       </div>
       <div className="sideBar__log-out-section">
-        <button className="sideBar__button">Log Out</button>
+        <button className="sideBar__button" onClick={onLogOutClick}>
+          Log Out
+        </button>
       </div>
     </div>
   );
