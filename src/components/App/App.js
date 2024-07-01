@@ -135,6 +135,20 @@ function App() {
       });
   };
 
+  const handleProfileEdit = ({ name, avatar }) => {
+    console.log("Edit profile submit button works");
+    api
+      .updateUserProfile({ name, avatar }, jwt)
+      .then((user) => {
+        console.log(user);
+        handleCloseModal();
+        setCurrentUser({ name, avatar });
+      })
+      .catch((res) => {
+        console.log(`There is an error in the program: ${res}`);
+      });
+  };
+
   const handlelogOut = () => {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
@@ -212,7 +226,7 @@ function App() {
                     }}
                     onCardDelete={handleDeleteCard}
                     onLogOut={handlelogOut}
-                    onProfileEdit={handleEditProfileModal}
+                    onProfileEditModal={handleEditProfileModal}
                   />
                 }
               ></Route>
@@ -262,7 +276,7 @@ function App() {
               <EditProfileModal
                 handleCloseModal={handleCloseModal}
                 isOpen={activeModal === "EditProfile"}
-                onLogInUser={handleUserLogInSubmit}
+                onEditProfileSubmit={handleProfileEdit}
                 handleModalRedirect={handleFormRedirect}
               />
             )}

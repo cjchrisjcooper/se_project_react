@@ -44,6 +44,18 @@ class Api {
     }).then(this._checkValidResponse);
   }
 
+  updateUserProfile({ name, imageUrl }, token) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ name, imageUrl }),
+    }).then(this._checkValidResponse);
+  }
+
   deleteClothingItem(id) {
     return fetch(`${this._baseUrl}/items/${id}`, {
       method: "DELETE",

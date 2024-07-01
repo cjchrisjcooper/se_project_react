@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
-const EditProfileModal = ({ handleCloseModal, onEditProfile, isOpen }) => {
+const EditProfileModal = ({
+  handleCloseModal,
+  isOpen,
+  onEditProfileSubmit,
+}) => {
+  const currentUser = useContext(CurrentUserContext);
   //you need to change these to Register modal state fields
 
   const [name, setName] = useState("");
@@ -18,15 +25,15 @@ const EditProfileModal = ({ handleCloseModal, onEditProfile, isOpen }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    onEditProfile();
+    onEditProfileSubmit({ name, avatar });
   };
 
   //same thing with this as well
 
   useEffect(() => {
     if (isOpen) {
-      setName("");
-      setavatar("");
+      setName(currentUser.name);
+      setavatar(currentUser.avatar);
     }
   }, [isOpen]);
 
