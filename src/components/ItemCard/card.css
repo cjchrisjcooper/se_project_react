@@ -9,9 +9,6 @@
 }
 
 .item-card__text {
-  position: absolute;
-  top: 15px;
-  left: calc(40%);
   margin: 0;
   text-align: center;
   background-color: white;
@@ -21,4 +18,42 @@
   font-weight: 400;
   font-size: 15px;
   color: rgba(0, 0, 0, 0.6);
+}
+
+.item-card__text-wrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  position: absolute;
+  top: 15px;
+  left: calc(40%);
+  gap: 10px;
+}
+
+.item-card__like-button {
+  width: 20px;
+  height: 18px;
+  background: transparent url("../../images/Like\ button.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  transition: all 0.4s ease-in-out;
+}
+
+.item-card__no-display {
+  display: none;
+}
+.item-card__like-button_active {
+  width: 20px;
+  height: 18px;
+  background: transparent url("../../images/Like\ button\ active.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  transition: all 0.4s ease-in-out;
+}
+
+.item-card__like-button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
 }

@@ -1,6 +1,17 @@
 import "./card.css";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
+const ItemCard = ({ item, onSelectCard, isLoggedIn, handleCardLike }) => {
+  const currentUser = useContext(CurrentUserContext);
 
-const ItemCard = ({ item, onSelectCard }) => {
+  const isLiked = item.likes.some((id) => id === currentUser._id);
+  const itemLikeButtonClassName = isLiked
+    ? "item-card__like-button"
+    : "item-card__like-button_active";
+  const handleLike = () => {
+    handleCardLike(item._id, isLiked);
+  };
+
   return (
     <div className="item-card">
       <img
@@ -9,7 +20,15 @@ const ItemCard = ({ item, onSelectCard }) => {
         onClick={() => onSelectCard(item)}
         alt={item.name}
       ></img>
-      <p className="item-card__text">{item.name}</p>
+      <div className="item-card__text-wrapper">
+        <p className="item-card__text">{item.name}</p>
+        <button
+          className={
+            isLoggedIn ? itemLikeButtonClassName : "item-card__no-display"
+          }
+          onClick={handleLike}
+        ></button>
+      </div>
     </div>
   );
 };

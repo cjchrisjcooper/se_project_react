@@ -56,10 +56,36 @@ class Api {
     }).then(this._checkValidResponse);
   }
 
-  deleteClothingItem(id) {
+  deleteClothingItem(id, token) {
     return fetch(`${this._baseUrl}/items/${id}`, {
       method: "DELETE",
-      headers: this.headers,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }).then(this._checkValidResponse);
+  }
+
+  likeClothingIem(id, token) {
+    return fetch(`${this._baseUrl}/items/${id}/likes`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }).then(this._checkValidResponse);
+  }
+
+  unlikeClothingIem(id, token) {
+    return fetch(`${this._baseUrl}/items/${id}/likes`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
     }).then(this._checkValidResponse);
   }
 }

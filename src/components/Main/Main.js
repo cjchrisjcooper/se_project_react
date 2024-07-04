@@ -6,7 +6,13 @@ import "./card-items.css";
 import { useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
-const Main = ({ currentWeather, onSelectCard, cards }) => {
+const Main = ({
+  currentWeather,
+  onSelectCard,
+  cards,
+  handleCardLike,
+  isLoggedIn,
+}) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const tempUnit = currentWeather?.temperature?.[currentTemperatureUnit] || 90;
   const weatherTypeFarenh = () => {
@@ -32,6 +38,7 @@ const Main = ({ currentWeather, onSelectCard, cards }) => {
   const weatherUnit = currentTemperatureUnit === "F" ? "F" : "C";
 
   const filteredCards = cards.filter((item) => {
+    console.log(item.weather);
     if (currentTemperatureUnit === "F") {
       return item.weather.toLowerCase() === weatherTypeFarenh();
     } else {
@@ -55,6 +62,8 @@ const Main = ({ currentWeather, onSelectCard, cards }) => {
                 item={item}
                 onSelectCard={onSelectCard}
                 key={item._id}
+                handleCardLike={handleCardLike}
+                isLoggedIn={isLoggedIn}
               />
             );
           })}

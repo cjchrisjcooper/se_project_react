@@ -6,7 +6,7 @@ import Footer from "../Footer/Footer.js";
 import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import AddItemModal from "../addItemModal/AddItemModal.js";
 import { register, authorize } from "../../utils/auth.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
@@ -59,7 +59,7 @@ function App() {
   const handleDeleteCard = (card) => {
     //Make some API call that deletes the card from the server
     api
-      .deleteClothingItem(card._id)
+      .deleteClothingItem(card._id, jwt)
       .then(() => {
         setClothingItems((cards) => cards.filter((x) => x._id !== card._id));
         //close the modal
@@ -155,6 +155,33 @@ function App() {
     setCurrentUser({});
   };
 
+  const handleCardLike = (id, isLiked) => {
+    console.log({ id, isLiked });
+    if (!isLiked) {
+      api
+        .likeClothingIem(id, jwt)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((item) => (item._id === cards._id ? updatedCard : item))
+          );
+        })
+        .catch((res) => {
+          console.log(`There is an error in the program: ${res}`);
+        });
+    } else {
+      api
+        .unlikeClothingIem(id, jwt)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((item) => (item._id === cards._id ? updatedCard : item))
+          );
+        })
+        .catch((res) => {
+          console.log(`There is an error in the program: ${res}`);
+        });
+    }
+  };
+
   useEffect(() => {
     getWeatherForcast()
       .then((data) => {
@@ -176,7 +203,6 @@ function App() {
       .getClothingItems()
       .then((items) => {
         setClothingItems(items);
-        console.log(clothingItems);
       })
       .catch((res) => console.log(`There is an error in the program: ${res}`));
   }, []);
@@ -194,8 +220,9 @@ function App() {
         .catch((res) => {
           console.log(`There is an error in the program: ${res}`);
         });
-    } else {
-      console.log("there is no token presently");
+    }
+    if (!jwt) {
+      return;
     }
   }, []);
 
@@ -237,6 +264,8 @@ function App() {
                     cards={clothingItems}
                     currentWeather={temp}
                     onSelectCard={handleSelectedCard}
+                    handleCardLike={handleCardLike}
+                    isLoggedIn={isLoggedIn}
                   />
                 }
               ></Route>
