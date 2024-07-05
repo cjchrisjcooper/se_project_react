@@ -21,3 +21,7 @@ Here are the main programming features of this application so far:
 
 My main goals for this application in the future is to make this application visible on github pages so users
 can test, appreciate, and criticise this project so that I can make further imporvements
+
+## How to get the back end of the project
+
+Here is a link to my backend of the repo which you will need to start the app : https://github.com/cjchrisjcooper/se_project_express
