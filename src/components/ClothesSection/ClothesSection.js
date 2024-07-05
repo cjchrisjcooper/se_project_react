@@ -1,8 +1,13 @@
 import "./ClothesSection.css";
-import { useMemo, useContext } from "react";
-import { defaultClothingItems } from "../../utils/constants";
+
 import ItemCard from "../ItemCard/ItemCard";
-const ClothesSection = ({ cards, onCardClick, onAddNewCardClick }) => {
+const ClothesSection = ({
+  cards,
+  onCardClick,
+  onAddNewCardClick,
+  handleCardLike,
+  isLoggedIn,
+}) => {
   return (
     <div className="clothesSection">
       <div className="clothesSection__add-clothes">
@@ -17,7 +22,13 @@ const ClothesSection = ({ cards, onCardClick, onAddNewCardClick }) => {
       <div className="clothesSection__cards">
         {cards.map((item) => {
           return (
-            <ItemCard item={item} onSelectCard={onCardClick} key={item._id} />
+            <ItemCard
+              item={item}
+              onSelectCard={onCardClick}
+              key={item._id}
+              handleCardLike={handleCardLike}
+              isLoggedIn={isLoggedIn}
+            />
           );
         })}
       </div>

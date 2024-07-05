@@ -161,8 +161,11 @@ function App() {
       api
         .likeClothingIem(id, jwt)
         .then((updatedCard) => {
+          console.log(updatedCard.data);
           setClothingItems((cards) =>
-            cards.map((item) => (item._id === cards._id ? updatedCard : item))
+            cards.map((item) =>
+              item._id === cards._id ? updatedCard.data : item
+            )
           );
         })
         .catch((res) => {
@@ -173,7 +176,9 @@ function App() {
         .unlikeClothingIem(id, jwt)
         .then((updatedCard) => {
           setClothingItems((cards) =>
-            cards.map((item) => (item._id === cards._id ? updatedCard : item))
+            cards.map((item) =>
+              item._id === cards._id ? updatedCard.data : item
+            )
           );
         })
         .catch((res) => {
@@ -254,6 +259,8 @@ function App() {
                     onCardDelete={handleDeleteCard}
                     onLogOut={handlelogOut}
                     onProfileEditModal={handleEditProfileModal}
+                    isLoggedIn={isLoggedIn}
+                    handleCardLike={handleCardLike}
                   />
                 }
               ></Route>

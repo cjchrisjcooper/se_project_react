@@ -57,3 +57,8 @@
   cursor: pointer;
   transform: scale(1.2);
 }
+
+.item-card__like-button_active:hover {
+  cursor: pointer;
+  transform: scale(0.9);
+}

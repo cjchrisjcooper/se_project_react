@@ -9,6 +9,8 @@ const Profile = ({
   onAddNewCardClick,
   onProfileEditModal,
   onLogOut,
+  handleCardLike,
+  isLoggedIn,
 }) => {
   return (
     <div className="Profile">
@@ -21,6 +23,8 @@ const Profile = ({
         onCardDelete={onCardDelete}
         onCardClick={onCardClick}
         onAddNewCardClick={onAddNewCardClick}
+        isLoggedIn={isLoggedIn}
+        handleCardLike={handleCardLike}
       />
     </div>
   );
