@@ -27,10 +27,10 @@ const RegisterModal = ({
     setPassword(e.target.value);
   };
 
-  const [avatar, setavatar] = useState("");
+  const [avatar, setAvatar] = useState("");
   const handleAvatarUrlChange = (e) => {
     console.log(e.target.value);
-    setavatar(e.target.value);
+    setAvatar(e.target.value);
   };
 
   const handleFormSubmit = (e) => {
@@ -45,7 +45,7 @@ const RegisterModal = ({
       setName("");
       setEmail("");
       setPassword("");
-      handleAvatarUrlChange("");
+      setAvatar("");
     }
   }, [isOpen]);
 
@@ -101,7 +101,7 @@ const RegisterModal = ({
           onChange={handleNameChange}
         />
       </label>
-      <label htmlFor="avatarUrl" className="modal_label-text">
+      <label htmlFor="avatar" className="modal_label-text">
         Avatar Url
         <input
           type="url"

@@ -8,8 +8,8 @@ const ItemCard = ({ item, onSelectCard, isLoggedIn, handleCardLike }) => {
   );
 
   const itemLikeButtonClassName = isCardLiked
-    ? "item-card__like-button"
-    : "item-card__like-button_active";
+    ? "item-card__like-button_active"
+    : "item-card__like-button";
   const handleLike = () => {
     handleCardLike(item._id, isCardLiked);
     setisCardLiked(!isCardLiked);

@@ -1,11 +1,11 @@
 import "../ModalWithForm/ModalWithForm.css";
 import "./ItemModal.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
   const currentUser = useContext(CurrentUserContext);
 
-  const isOwn = selectedCard.owner === currentUser._id;
+  const [isOwn, setIsOwn] = useState(selectedCard.owner === currentUser._id);
 
   const itemDeleteButtonClassName = isOwn
     ? "modal-content__delete-section"

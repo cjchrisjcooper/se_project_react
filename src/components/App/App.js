@@ -128,7 +128,7 @@ function App() {
         console.log(user);
         setIsLoggedIn(true);
         setCurrentUser({ name, password, email, avatar });
-        handleCloseModal();
+        handleUserLogInSubmit(email, password);
       })
       .catch((res) => {
         console.log(`There is an error in the program: ${res}`);
@@ -137,6 +137,7 @@ function App() {
 
   const handleProfileEdit = ({ name, avatar }) => {
     console.log("Edit profile submit button works");
+
     api
       .updateUserProfile({ name, avatar }, jwt)
       .then((user) => {
