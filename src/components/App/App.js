@@ -7,11 +7,11 @@ import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal.js";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { Routes, Route } from "react-router-dom";
-import AddItemModal from "../RemovedFilesByCase/AddItemModal.js";
+import AddItemModal from "../AddItemModal/AddItemModal.js";
 import { register, authorize } from "../../utils/auth.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import Profile from "../RemovedFilesByCase/Profile.js";
+import Profile from "../Profile/Profile.js";
 import {
   getWeatherForcast,
   parseWeatherData,
@@ -20,7 +20,7 @@ import {
 import { api } from "../../utils/constants.js";
 import RegisterModal from "../RegisterModal/RegisterModal.js";
 import LogInModal from "../LoginModal/LoginModal.js";
-import EditProfileModal from "../RemovedFilesByCase/EditProfileModal.js";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.js";
 // import Api from "../../utils/api.js";
 // const userApi = new Api("http://localhost:3001");
 
