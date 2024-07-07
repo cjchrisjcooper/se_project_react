@@ -11,23 +11,27 @@ const headers = {
 // The register function accepts the necessary data as arguments,
 // and sends a POST request to the given endpoint.
 function register(name, password, email, avatar) {
-  return fetch(`${BASE_URL}/signup`, {
+  return request(`${BASE_URL}/signup`, {
     method: "POST",
     headers: headers,
     body: JSON.stringify({ name, password, email, avatar }),
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
   });
 }
 
 function authorize(password, email) {
-  return fetch(`${BASE_URL}/signin`, {
+  return request(`${BASE_URL}/signin`, {
     method: "POST",
     headers: headers,
     body: JSON.stringify({ password, email }),
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
   });
+}
+
+function checkResponse(res) {
+  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+}
+
+function request(url, options) {
+  return fetch(url, options).then(checkResponse);
 }
 
 export { register, authorize };

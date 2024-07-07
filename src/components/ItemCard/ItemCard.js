@@ -3,7 +3,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext, useState } from "react";
 const ItemCard = ({ item, onSelectCard, isLoggedIn, handleCardLike }) => {
   const currentUser = useContext(CurrentUserContext);
-  const [isCardLiked, setisCardLiked] = useState(
+  const [isCardLiked, setIsCardLiked] = useState(
     item.likes.some((id) => id === currentUser._id)
   );
 
@@ -12,7 +12,7 @@ const ItemCard = ({ item, onSelectCard, isLoggedIn, handleCardLike }) => {
     : "item-card__like-button";
   const handleLike = () => {
     handleCardLike(item._id, isCardLiked);
-    setisCardLiked(!isCardLiked);
+    setIsCardLiked(!isCardLiked);
     console.log(isCardLiked);
   };
   console.log(isCardLiked);

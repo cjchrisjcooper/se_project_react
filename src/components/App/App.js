@@ -10,7 +10,7 @@ import { Routes, Route } from "react-router-dom";
 import AddItemModal from "../addItemModal/AddItemModal.js";
 import { register, authorize } from "../../utils/auth.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
-
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Profile from "../profile/Profile.js";
 import {
   getWeatherForcast,
@@ -213,6 +213,20 @@ function App() {
       .catch((res) => console.log(`There is an error in the program: ${res}`));
   }, []);
 
+  //this doesnt work for some reason
+  useEffect(() => {
+    if (!activeModal) return;
+    const handleEscCloseModal = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+      document.addEventListener("keydown", handleEscCloseModal);
+      return () => {
+        document.removeEventListener("keydown", handleEscCloseModal);
+      };
+    };
+  }, [activeModal]);
+
   //use effect to check if there is a jwt token
   useEffect(() => {
     if (jwt) {
@@ -250,19 +264,21 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  <Profile
-                    cards={clothingItems}
-                    currentWeather={temp}
-                    onCardClick={handleSelectedCard}
-                    onAddNewCardClick={() => {
-                      setActiveModal("create");
-                    }}
-                    onCardDelete={handleDeleteCard}
-                    onLogOut={handlelogOut}
-                    onProfileEditModal={handleEditProfileModal}
-                    isLoggedIn={isLoggedIn}
-                    handleCardLike={handleCardLike}
-                  />
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <Profile
+                      cards={clothingItems}
+                      currentWeather={temp}
+                      onCardClick={handleSelectedCard}
+                      onAddNewCardClick={() => {
+                        setActiveModal("create");
+                      }}
+                      onCardDelete={handleDeleteCard}
+                      onLogOut={handlelogOut}
+                      onProfileEditModal={handleEditProfileModal}
+                      isLoggedIn={isLoggedIn}
+                      handleCardLike={handleCardLike}
+                    />
+                  </ProtectedRoute>
                 }
               ></Route>
               <Route

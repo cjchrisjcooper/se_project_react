@@ -28,11 +28,11 @@ const ModalWithForm = ({
             </button>
             <button
               className={`${
-                title === "Sign Up" || "Log in" ? "button_visible" : ""
+                modalRedirectButtonText ? "button_visible" : "button_hidden"
               }`}
               onClick={modalFormRedirect}
             >
-              {title === "Sign Up" || "Log in" ? modalRedirectButtonText : ""}
+              {modalRedirectButtonText ? modalRedirectButtonText : ""}
             </button>
           </div>
         </form>

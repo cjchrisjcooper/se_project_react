@@ -14,26 +14,30 @@ class Api {
     return Promise.reject(`Error ${res.status}`);
   }
 
+  _request(url, options) {
+    return fetch(url, options).then(this._checkValidResponse);
+  }
+
   getClothingItems() {
-    return fetch(`${this._baseUrl}/items`, {
+    return this._request(`${this._baseUrl}/items`, {
       method: "GET",
       headers: this.headers,
-    }).then(this._checkValidResponse);
+    });
   }
 
   getUserInfo(token) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this._request(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-    }).then(this._checkValidResponse);
+    });
   }
 
   addNewClothingItems({ name, weather, imageUrl }, token) {
-    return fetch(`${this._baseUrl}/items`, {
+    return this._request(`${this._baseUrl}/items`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -41,11 +45,11 @@ class Api {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ name, weather, imageUrl }),
-    }).then(this._checkValidResponse);
+    });
   }
 
   updateUserProfile({ name, imageUrl }, token) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this._request(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",
@@ -53,40 +57,40 @@ class Api {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ name, imageUrl }),
-    }).then(this._checkValidResponse);
+    });
   }
-
+  //return this._request()
   deleteClothingItem(id, token) {
-    return fetch(`${this._baseUrl}/items/${id}`, {
+    return this._request(`${this._baseUrl}/items/${id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-    }).then(this._checkValidResponse);
+    });
   }
 
   likeClothingIem(id, token) {
-    return fetch(`${this._baseUrl}/items/${id}/likes`, {
+    return this._request(`${this._baseUrl}/items/${id}/likes`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-    }).then(this._checkValidResponse);
+    });
   }
 
   unlikeClothingIem(id, token) {
-    return fetch(`${this._baseUrl}/items/${id}/likes`, {
+    return this._request(`${this._baseUrl}/items/${id}/likes`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-    }).then(this._checkValidResponse);
+    });
   }
 }
 
