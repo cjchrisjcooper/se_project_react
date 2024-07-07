@@ -11,9 +11,13 @@ const ItemCard = ({ item, onSelectCard, isLoggedIn, handleCardLike }) => {
     ? "item-card__like-button_active"
     : "item-card__like-button";
   const handleLike = () => {
-    handleCardLike(item._id, isCardLiked);
-    setIsCardLiked(!isCardLiked);
-    console.log(isCardLiked);
+    handleCardLike(item._id, isCardLiked)
+      .then(() => {
+        setIsCardLiked(!isCardLiked);
+      })
+      .catch((err) => {
+        console.error("Error updating like status", err);
+      });
   };
   console.log(isCardLiked);
   return (
