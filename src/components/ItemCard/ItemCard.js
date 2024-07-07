@@ -19,7 +19,6 @@ const ItemCard = ({ item, onSelectCard, isLoggedIn, handleCardLike }) => {
         console.error("Error updating like status", err);
       });
   };
-  console.log(isCardLiked);
   return (
     <div className="item-card">
       <img

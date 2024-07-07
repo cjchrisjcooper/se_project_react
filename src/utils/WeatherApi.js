@@ -26,13 +26,11 @@ export const parseWeatherData = (data) => {
       C: `${Math.round(((mainTempurature - 32) * 5) / 9)}`,
     },
   };
-  console.log(weather);
   return weather;
 };
 
 export const parseLocationData = (data) => {
   const mainWeather = data;
   const mainWeatherLocation = mainWeather && mainWeather.name;
-  console.log(mainWeatherLocation);
   return mainWeatherLocation;
 };

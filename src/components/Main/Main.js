@@ -38,15 +38,12 @@ const Main = ({
   const weatherUnit = currentTemperatureUnit === "F" ? "F" : "C";
 
   const filteredCards = cards.filter((item) => {
-    console.log(item.weather);
     if (currentTemperatureUnit === "F") {
       return item.weather.toLowerCase() === weatherTypeFarenh();
     } else {
       return item.weather.toLowerCase() === weatherTypeCelc();
     }
   });
-
-  console.log(cards);
 
   return (
     <main className="page__main main">

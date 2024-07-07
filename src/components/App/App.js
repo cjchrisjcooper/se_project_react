@@ -159,7 +159,7 @@ function App() {
   const handleCardLike = (id, isLiked) => {
     console.log({ id, isLiked });
     if (!isLiked) {
-      api
+      return api
         .likeClothingIem(id, jwt)
         .then((updatedCard) => {
           console.log(updatedCard.data);
@@ -173,7 +173,7 @@ function App() {
           console.log(`There is an error in the program: ${res}`);
         });
     } else {
-      api
+      return api
         .unlikeClothingIem(id, jwt)
         .then((updatedCard) => {
           setClothingItems((cards) =>
@@ -193,7 +193,6 @@ function App() {
       .then((data) => {
         const currentTemp = parseWeatherData(data);
         const currentLocation = parseLocationData(data);
-        console.log(currentTemp);
         setTemp(currentTemp);
         setCurrentLocation(currentLocation);
       })
@@ -230,7 +229,6 @@ function App() {
   //use effect to check if there is a jwt token
   useEffect(() => {
     if (jwt) {
-      console.log("there is a token");
       api
         .getUserInfo(jwt)
         .then((user) => {
