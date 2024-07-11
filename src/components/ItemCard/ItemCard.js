@@ -11,14 +11,17 @@ const ItemCard = ({ item, onSelectCard, isLoggedIn, handleCardLike }) => {
     ? "item-card__like-button_active"
     : "item-card__like-button";
   const handleLike = () => {
-    handleCardLike(item._id, isCardLiked)
-      .then(() => {
-        setIsCardLiked(!isCardLiked);
-      })
-      .catch((err) => {
-        console.error("Error updating like status", err);
-      });
+    handleCardLike(item._id, isCardLiked);
   };
+  // const handleLike = () => {
+  //   handleCardLike(item._id, isCardLiked)
+  //     .then(() => {
+  //       setIsCardLiked(!isCardLiked);
+  //     })
+  //     .catch((err) => {
+  //       console.error("Error updating like status", err);
+  //     });
+  // };
   return (
     <div className="item-card">
       <img

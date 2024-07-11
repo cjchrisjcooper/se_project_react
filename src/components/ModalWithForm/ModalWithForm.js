@@ -27,6 +27,7 @@ const ModalWithForm = ({
               {buttonText}
             </button>
             <button
+              type="button"
               className={`${
                 modalRedirectButtonText ? "button_visible" : "button_hidden"
               }`}

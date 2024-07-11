@@ -87,7 +87,7 @@ const RegisterModal = ({
           onChange={handlePasswordChange}
         />
       </label>
-      <label htmlFor="name" className="modal_label-text">
+      <label htmlFor="Name" className="modal_label-text">
         Name
         <input
           type="text"
@@ -101,7 +101,7 @@ const RegisterModal = ({
           onChange={handleNameChange}
         />
       </label>
-      <label htmlFor="avatar" className="modal_label-text">
+      <label htmlFor="avatarUrl" className="modal_label-text">
         Avatar Url
         <input
           type="url"
