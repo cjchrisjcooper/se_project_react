@@ -165,7 +165,7 @@ function App() {
           console.log(updatedCard.data);
           setClothingItems((cards) =>
             cards.map((item) =>
-              item._id === cards._id ? updatedCard.data : item
+              item._id === cards.id ? updatedCard.data : item
             )
           );
         })
@@ -178,7 +178,7 @@ function App() {
         .then((updatedCard) => {
           setClothingItems((cards) =>
             cards.map((item) =>
-              item._id === cards._id ? updatedCard.data : item
+              item._id === cards.id ? updatedCard.data : item
             )
           );
         })

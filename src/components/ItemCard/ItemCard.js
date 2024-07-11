@@ -1,11 +1,9 @@
 import "./card.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 const ItemCard = ({ item, onSelectCard, isLoggedIn, handleCardLike }) => {
   const currentUser = useContext(CurrentUserContext);
-  const [isCardLiked, setIsCardLiked] = useState(
-    item.likes.some((id) => id === currentUser._id)
-  );
+  const isCardLiked = item.likes.some((id) => id === currentUser._id);
 
   const itemLikeButtonClassName = isCardLiked
     ? "item-card__like-button_active"
