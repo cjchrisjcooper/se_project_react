@@ -155,7 +155,7 @@ function App() {
     setIsLoggedIn(false);
     setCurrentUser({});
   };
-
+  //sorry i thought you meant replace "cards._id" with "cards.id" instead
   const handleCardLike = (id, isLiked) => {
     console.log({ id, isLiked });
     if (!isLiked) {
@@ -164,9 +164,7 @@ function App() {
         .then((updatedCard) => {
           console.log(updatedCard.data);
           setClothingItems((cards) =>
-            cards.map((item) =>
-              item._id === cards.id ? updatedCard.data : item
-            )
+            cards.map((item) => (item._id === id ? updatedCard.data : item))
           );
         })
         .catch((res) => {
@@ -177,9 +175,7 @@ function App() {
         .unlikeClothingIem(id, jwt)
         .then((updatedCard) => {
           setClothingItems((cards) =>
-            cards.map((item) =>
-              item._id === cards.id ? updatedCard.data : item
-            )
+            cards.map((item) => (item._id === id ? updatedCard.data : item))
           );
         })
         .catch((res) => {
