@@ -1,7 +1,8 @@
 // src/utils/auth.js
 
+import { BASE_URL } from "./constants";
+
 // Specify the BASE_URL for the API.
-export const BASE_URL = "http://localhost:3001";
 
 const headers = {
   Accept: "application/json",

@@ -1,7 +1,8 @@
+import { BASE_URL } from "./constants";
 class Api {
-  constructor({ baseUrl = "http://localhost:3001", headers }) {
+  constructor() {
     // constructor body
-    this._baseUrl = baseUrl;
+    this._baseUrl = BASE_URL;
     this.headers = {
       "Content-Type": "application/json",
     };
