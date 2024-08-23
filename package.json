@@ -16,9 +16,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "vite build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && scp -r ./build/* cjchrisjcooper@cjchris-demo.jumpingcrab.com:/home/cjchrisjcooper/frontend"
   },
   "eslintConfig": {
     "extends": [
