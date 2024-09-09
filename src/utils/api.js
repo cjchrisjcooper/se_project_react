@@ -49,7 +49,7 @@ class Api {
     });
   }
 
-  updateUserProfile({ name, imageUrl }, token) {
+  updateUserProfile({ name, avatar }, token) {
     return this._request(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: {
@@ -57,7 +57,7 @@ class Api {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ name, imageUrl }),
+      body: JSON.stringify({ name, avatar }),
     });
   }
   //return this._request()
